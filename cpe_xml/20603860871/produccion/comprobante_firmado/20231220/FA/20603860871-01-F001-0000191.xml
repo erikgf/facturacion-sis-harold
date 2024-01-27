@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ccts="urn:un:unece:uncefact:documentation:2" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:qdt="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDatatypes-2" xmlns:udt="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> 
+					
+					<ext:UBLExtensions>
+						<ext:UBLExtension>
+							<ext:ExtensionContent>
+							<ds:Signature Id="SignSUNAT">
+  <ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+    <ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+  <ds:Reference URI=""><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><ds:DigestValue>WjkR6EFIk1uLAGS4WKKS/7n+Nso=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue>f3yyRASvF72WGUPgxQK51QcxGYiubXGY+f2HEnTBB2XefDsqoclP0vUtHbdmaYqDi0CtMjTOeofhRkK59k9myo448GWm4KhNqJl6UfRhf8T2n5rg1IGauLSp1eT5g2Lni4Rpuda6C8FAl8NeDyYrZXxzWEnAb9cD0U/u28bwotJduh4ICEI38su/4CV/JCMQsSB1w6emPAXPgir58zQFOkzXlMhaXWHIgGl16mreY9G+0nGXzF8gsf4IuaOasx1IMFHkM/Hrtuk0jBi9v16z1nEOuGLbY38QebRSKsSHaubVMiGaykQCpD9LJHx4tmlf49mz1MzflVYofwAWqHyCUQ==</ds:SignatureValue>
+<ds:KeyInfo><ds:X509Data><ds:X509SubjectName>CN=||USO TRIBUTARIO|| ANDREITA BABY KIDS S.A.C. CDT 20603860871,OU=20603860871,OU=EREP_SUNAT_2023000408117,UNDEF=NTRPE-20603860871,O=ANDREITA BABY KIDS S.A.C.,L=CHICLAYO,ST=LAMBAYEQUE-CHICLAYO,C=PE</ds:X509SubjectName><ds:X509Certificate>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</ds:X509Certificate></ds:X509Data></ds:KeyInfo></ds:Signature></ext:ExtensionContent>
+						</ext:UBLExtension>
+					</ext:UBLExtensions>
+					<cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+					<cbc:CustomizationID>2.0</cbc:CustomizationID>
+					<cbc:ID>F001-0000191</cbc:ID>
+					<cbc:IssueDate>2023-12-20</cbc:IssueDate>
+					<cbc:IssueTime>20:25:11</cbc:IssueTime>
+					
+						<cbc:DueDate>2023-12-20</cbc:DueDate>
+						
+					<cbc:InvoiceTypeCode listID="0101" listAgencyName="PE:SUNAT" listName="Tipo de Documento" listURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo01">01</cbc:InvoiceTypeCode>
+					<cbc:Note languageLocaleID="1000">Cincuenta y Cinco y 00/100 Soles</cbc:Note>
+					<cbc:DocumentCurrencyCode listID="ISO 4217 Alpha" listAgencyName="United Nations Economic Commission for Europe" listName="Currency">PEN</cbc:DocumentCurrencyCode>
+															
+					
+					<cbc:LineCountNumeric>1</cbc:LineCountNumeric>
+					
+					
+						
+					<cac:Signature>
+						<cbc:ID>20603860871</cbc:ID>
+						<cac:SignatoryParty>
+							<cac:PartyIdentification>
+								<cbc:ID>20603860871</cbc:ID>
+							</cac:PartyIdentification>
+							<cac:PartyName>
+								<cbc:Name><![CDATA[ANDREITA BABY KIDS S.A.C.]]></cbc:Name>
+							</cac:PartyName>
+						</cac:SignatoryParty>
+						<cac:DigitalSignatureAttachment>
+							<cac:ExternalReference>
+								<cbc:URI>20603860871</cbc:URI>
+							</cac:ExternalReference>
+						</cac:DigitalSignatureAttachment>	
+					</cac:Signature>
+					<cac:AccountingSupplierParty>
+							<cac:Party>
+							
+								<cac:PartyIdentification>
+									<cbc:ID schemeID="6" schemeName="Documento de Identidad" schemeAgencyName="PE:SUNAT" schemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06">20603860871</cbc:ID>
+							</cac:PartyIdentification>
+								
+							<cac:PartyName>
+								<cbc:Name><![CDATA[ANDREITA BABY KIDS S.A.C.]]></cbc:Name>
+							</cac:PartyName>	
+							
+							<cac:PartyTaxScheme>
+								<cbc:RegistrationName><![CDATA[ANDREITA BABY KIDS S.A.C.]]></cbc:RegistrationName>
+								
+								<cbc:CompanyID schemeID="6" schemeName="SUNAT:Identificador de Documento de Identidad" schemeAgencyName="PE:SUNAT" schemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06">20603860871</cbc:CompanyID>
+							
+							<cac:RegistrationAddress>
+								<cbc:AddressTypeCode>0000</cbc:AddressTypeCode>
+							</cac:RegistrationAddress>
+							
+							<cac:TaxScheme>
+								<cbc:ID schemeID="6" schemeName="SUNAT:Identificador de Documento de Identidad" schemeAgencyName="PE:SUNAT" schemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06">20603860871</cbc:ID>
+							</cac:TaxScheme>
+								
+							</cac:PartyTaxScheme>
+							
+							<cac:PartyLegalEntity>
+								
+								<cbc:RegistrationName><![CDATA[ANDREITA BABY KIDS S.A.C.]]></cbc:RegistrationName>
+								<cac:RegistrationAddress>
+									<cbc:ID schemeAgencyName="PE:INEI" schemeName="Ubigeos">140101</cbc:ID>
+									<cbc:AddressTypeCode listName="Establecimientos anexos" listAgencyName="PE:SUNAT">0000</cbc:AddressTypeCode>
+									<cac:AddressLine>
+										<cbc:Line>AV. BALTA NRO 1412 INT.103 GALERIA IVANLIKA</cbc:Line>
+									</cac:AddressLine>
+									<cac:Country>
+										<cbc:IdentificationCode listName="Country" listAgencyName="United Nations Economic Commission for Europe" listID="ISO 3166-1">PE</cbc:IdentificationCode>
+									</cac:Country>
+								</cac:RegistrationAddress>
+								
+							</cac:PartyLegalEntity>
+											
+						</cac:Party>
+					</cac:AccountingSupplierParty>
+					
+					<cac:AccountingCustomerParty>
+											
+						<cac:Party>
+							
+							<cac:PartyIdentification>
+								<cbc:ID schemeID="6" schemeName="Documento de Identidad" schemeAgencyName="PE:SUNAT" schemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06">20609877309</cbc:ID>
+							</cac:PartyIdentification>
+							
+							<cac:PartyName>
+								<cbc:Name><![CDATA[ASOCIACION PROYECTO EDUCATIVO YESHUA 394]]></cbc:Name>
+							</cac:PartyName>
+							
+							<cac:PartyTaxScheme>
+								<cbc:RegistrationName><![CDATA[ASOCIACION PROYECTO EDUCATIVO YESHUA 394]]></cbc:RegistrationName>
+								<cbc:CompanyID schemeID="6" schemeName="SUNAT:Identificador de Documento de Identidad" schemeAgencyName="PE:SUNAT" schemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06">20609877309</cbc:CompanyID>
+								<cac:TaxScheme><cbc:ID>20609877309</cbc:ID></cac:TaxScheme>
+							</cac:PartyTaxScheme>				
+							
+							<cac:PartyLegalEntity>
+								<cbc:RegistrationName><![CDATA[ASOCIACION PROYECTO EDUCATIVO YESHUA 394]]></cbc:RegistrationName>
+								<cac:RegistrationAddress>
+									<cbc:ID schemeAgencyName="PE:INEI" schemeName="Ubigeos">107001</cbc:ID>
+									<cac:AddressLine>
+										<cbc:Line><![CDATA[JR CAJAMARCA NR 470- AMAZONES BAGUA BAGUA]]></cbc:Line>
+									</cac:AddressLine>
+									<cac:Country>
+										<cbc:IdentificationCode listName="Country" listAgencyName="United Nations Economic Commission for Europe" listID="ISO 3166-1">PE</cbc:IdentificationCode>
+									</cac:Country>
+								</cac:RegistrationAddress>
+							</cac:PartyLegalEntity>
+						</cac:Party>
+					</cac:AccountingCustomerParty>
+					
+					
+					<cac:PaymentTerms>
+						<cbc:ID>FormaPago</cbc:ID>
+						<cbc:PaymentMeansID>Contado</cbc:PaymentMeansID>
+					</cac:PaymentTerms>
+					
+					
+
+					
+					
+					<cac:TaxTotal>
+						
+						<cbc:TaxAmount currencyID="PEN">8.39</cbc:TaxAmount>
+						<cac:TaxSubtotal>
+							<cbc:TaxableAmount currencyID="PEN">46.61</cbc:TaxableAmount>
+							<cbc:TaxAmount currencyID="PEN">8.39</cbc:TaxAmount>
+							<cac:TaxCategory>
+								<cbc:ID schemeAgencyName="United Nations Economic Commission for Europe" schemeName="Tax Category Identifier" schemeID="UN/ECE 5305">S</cbc:ID>
+								<cac:TaxScheme>
+									<cbc:ID schemeID="UN/ECE 5153" schemeAgencyID="6">1000</cbc:ID>
+									<cbc:Name>IGV</cbc:Name>
+									<cbc:TaxTypeCode>VAT</cbc:TaxTypeCode>
+								</cac:TaxScheme>
+							</cac:TaxCategory>
+						</cac:TaxSubtotal>
+								
+					</cac:TaxTotal>
+					
+					
+													
+											
+						<cac:LegalMonetaryTotal>
+							<cbc:LineExtensionAmount currencyID="PEN">46.61</cbc:LineExtensionAmount>
+							<cbc:TaxInclusiveAmount currencyID="PEN">55.00</cbc:TaxInclusiveAmount>
+							<cbc:AllowanceTotalAmount currencyID="PEN">0.00</cbc:AllowanceTotalAmount>
+							<cbc:ChargeTotalAmount currencyID="PEN">0.00</cbc:ChargeTotalAmount>
+							<cbc:PayableAmount currencyID="PEN">55.00</cbc:PayableAmount>
+						</cac:LegalMonetaryTotal>
+						
+						
+					
+					
+					<cac:InvoiceLine>
+									
+					
+						<cbc:ID>1</cbc:ID>
+						<cbc:InvoicedQuantity unitCode="NIU" unitCodeListID="UN/ECE rec 20" unitCodeListAgencyName="United Nations Economic Commission for Europe">2.00000000</cbc:InvoicedQuantity>
+						<cbc:LineExtensionAmount currencyID="PEN">46.61</cbc:LineExtensionAmount>
+						
+						
+						
+						
+							<cac:PricingReference>
+								<cac:AlternativeConditionPrice>
+									<cbc:PriceAmount currencyID="PEN">27.50000</cbc:PriceAmount>
+									<cbc:PriceTypeCode listURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo16" listName="Tipo de Precio" listAgencyName="PE:SUNAT">01</cbc:PriceTypeCode>
+								</cac:AlternativeConditionPrice>
+							</cac:PricingReference>
+							
+							
+							<cac:TaxTotal>
+								<cbc:TaxAmount currencyID="PEN">8.39</cbc:TaxAmount>
+								<cac:TaxSubtotal>
+									<cbc:TaxableAmount currencyID="PEN">46.61</cbc:TaxableAmount>
+									<cbc:TaxAmount currencyID="PEN">8.39</cbc:TaxAmount>
+									<cac:TaxCategory>
+										<cbc:ID schemeAgencyName="United Nations Economic Commission for Europe" schemeName="Tax Category Identifier" schemeID="UN/ECE 5305">S</cbc:ID>
+										<cbc:Percent>18</cbc:Percent>
+										<cbc:TaxExemptionReasonCode listURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo07" listName="Afectacion del IGV" listAgencyName="PE:SUNAT">10</cbc:TaxExemptionReasonCode>
+										<cac:TaxScheme>
+											<cbc:ID schemeID="UN/ECE 5153" schemeAgencyID="6">1000</cbc:ID>
+											<cbc:Name>IGV</cbc:Name>
+											<cbc:TaxTypeCode>VAT</cbc:TaxTypeCode>
+										</cac:TaxScheme>
+										
+									</cac:TaxCategory>
+								</cac:TaxSubtotal>
+							</cac:TaxTotal>
+						
+						
+						
+						
+											
+						<cac:Item>
+							
+							<cbc:Description><![CDATA[POLO]]></cbc:Description>
+							<cac:SellersItemIdentification>
+								<cbc:ID>1PO000462</cbc:ID>
+							</cac:SellersItemIdentification>
+						</cac:Item>
+						
+						
+						
+						
+							<cac:Price>
+								<cbc:PriceAmount currencyID="PEN">23.30508475</cbc:PriceAmount>
+							</cac:Price>
+						
+							
+						
+					</cac:InvoiceLine>
+					
+					
+					
+										
+			</Invoice>
