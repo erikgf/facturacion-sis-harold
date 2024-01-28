@@ -52,13 +52,15 @@
 				$resp = $objGeneradorXML->crear_xml_nota_debito($data,  $nombre_archivo, $ruta);
 				break;
 			case "RC":
+				if (!isset($data["detalle"]) || count($data["detalle"]) <= 0){
+					throw new Exception("Se ha está enviando un resumen diario sin DOCUMENTOS.", 1);
+				}
 				$resp = $objGeneradorXML->crear_xml_resumen_documentos($data, $nombre_archivo, $ruta);
 				break;
 			default:
 				throw new Exception("Se ha ingresado un tipo de comprobate no válido.", 1);
 				break;
 		}
-
 		//Reformular la ruta: de local a externa.
 		$resp["ruta"] = $objGeneradorRutaCPE->getRutaExterna($resp["ruta"]); 
 		

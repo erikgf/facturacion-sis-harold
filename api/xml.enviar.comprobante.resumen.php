@@ -31,14 +31,19 @@
         foreach ($resumenes as $key => $obj_resumen) {
             $fecha = str_replace("-","",$obj_resumen["fecha_emision"]);
 			$archivo = $obj_resumen["nombre_archivo"];
-			$directorio = "../cpe_xml/".F_RUC."/".$carpeta."/comprobante_firmado/".$fecha."/".$data["id_tipo_comprobante"]."/";
-            $ruta_cdr = "../cpe_xml/".F_RUC."/".$carpeta."/cdr/".$fecha."/".$data["id_tipo_comprobante"]."/";
+			$EMISOR_RUC = $obj_resumen["EMISOR_RUC"];
+			$EMISOR_USUARIO_SOL = $obj_resumen["EMISOR_USUARIO_SOL"];
+			$EMISOR_PASS_SOL = $obj_resumen["EMISOR_PASS_SOL"];
+
+			$directorio = "../cpe_xml/".$EMISOR_RUC."/".$carpeta."/comprobante_firmado/".$fecha."/".$data["id_tipo_comprobante"]."/";
+            $ruta_cdr = "../cpe_xml/".$EMISOR_RUC."/".$carpeta."/cdr/".$fecha."/".$data["id_tipo_comprobante"]."/";
             if(!is_dir($ruta_cdr)){
                 mkdir($ruta_cdr, 0755, true);
             }
 			$ruta_archivo = $directorio.$archivo;
-			$r = $enviadorXML->enviar_resumen_boletas(F_RUC, F_USUARIO_SOL, F_CLAVE_SOL, $ruta_archivo, $ruta_cdr, $archivo, $ruta_ws);
+			$r = $enviadorXML->enviar_resumen_boletas($EMISOR_RUC, $EMISOR_USUARIO_SOL, $EMISOR_PASS_SOL, $ruta_archivo, $ruta_cdr, $archivo, $ruta_ws);
             $r["id"] = $obj_resumen["id"];
+			$r["nombre_archivo"] = $archivo;
             array_push($arreglo_respuestas, $r);
         }
 

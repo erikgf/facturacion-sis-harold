@@ -31,12 +31,17 @@
 
         foreach ($tickets as $key => $obj_ticket) {
             $fecha = str_replace("-","",$obj_ticket["fecha_emision"]);
+			$EMISOR_RUC = $obj_ticket["EMISOR_RUC"];
+			$EMISOR_USUARIO_SOL = $obj_ticket["EMISOR_USUARIO_SOL"];
+			$EMISOR_PASS_SOL = $obj_ticket["EMISOR_PASS_SOL"];
+
             $ruta_cdr = "../cpe_xml/".F_RUC."/".$carpeta."/cdr/".$fecha."/".$data["id_tipo_comprobante"]."/";
             if(!is_dir($ruta_cdr)){
                 mkdir($ruta_cdr, 0755, true);
             }
-            $r = $objConsultorTicket->consultar_envio_ticket(F_RUC, F_USUARIO_SOL, F_CLAVE_SOL, $obj_ticket["ticket"], $obj_ticket["nombre_resumen"], $ruta_cdr, $ruta_ws);
-            $r["id_documento_electronico_resumen_diario"] = $obj_ticket["id_documento_electronico_resumen_diario"];
+            $r = $objConsultorTicket->consultar_envio_ticket($EMISOR_RUC, $EMISOR_USUARIO_SOL, $EMISOR_PASS_SOL, $obj_ticket["ticket"], $obj_ticket["nombre_resumen"], $ruta_cdr, $ruta_ws);
+            $r["id"] = $obj_ticket["id"];
+			$r["nombre_archivo"] = $obj_ticket["nombre_resumen"];
             array_push($arreglo_respuestas, $r);
         }
 

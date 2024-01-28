@@ -893,6 +893,7 @@ class GeneradorXML {
 
             $doc->loadXML($xmlCPE);
             $doc->save($ruta ."/". $nombre_archivo);
+            $resp["xml_filename"] = basename($nombre_archivo, '.XML');
             $resp['respuesta'] = 'ok';
             $resp["creado"]  = "1";
             $resp["ruta"] = $ruta;
