@@ -30,6 +30,6 @@
  define("F_CERTIFICADO","C24012397483.pfx");
  define("F_PASS_FIRMA","C24012397483XX");
  define("F_FOLDER_XML","cpe_xml");
- define("F_MODO_PROCESO","3"); /*PRODUCCION: 1, BETA: 3*/
+ define("F_MODO_PROCESO","1"); /*PRODUCCION: 1, BETA: 3*/
  define("F_RUTA","https://e-factura.sunat.gob.pe/ol-ti-itcpfegem/billService"); 
  define("F_RUTA_BETA","https://e-beta.sunat.gob.pe:443/ol-ti-itcpfegem-beta/billService"); /*PRODUCCION: 1, BETA: 3*/
