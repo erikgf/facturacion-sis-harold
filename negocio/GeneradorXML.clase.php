@@ -117,9 +117,14 @@ class GeneradorXML {
                                 <cbc:RegistrationName><![CDATA[' . $cabecera["RAZON_SOCIAL_EMPRESA"] . ']]></cbc:RegistrationName>
                                 <cac:RegistrationAddress>
                                     <cbc:ID schemeName="Ubigeos" schemeAgencyName="PE:INEI">'.$cabecera["CODIGO_UBIGEO_EMPRESA"].'</cbc:ID>
-                                    <cbc:AddressTypeCode listAgencyName="PE:SUNAT" listName="Establecimientos anexos">0000</cbc:AddressTypeCode>
-                                    <cbc:CitySubdivisionName><![CDATA[' . ($cabecera["URBANIZACION_EMPRESA"] == NULL ? '' : $cabecera["URBANIZACION_EMPRESA"]). ']]></cbc:CitySubdivisionName>
-                                    <cbc:CityName><![CDATA[' . $cabecera["DEPARTAMENTO_EMPRESA"] . ']]></cbc:CityName>
+                                    <cbc:AddressTypeCode listAgencyName="PE:SUNAT" listName="Establecimientos anexos">0000</cbc:AddressTypeCode>';
+
+
+                        if ( $cabecera["URBANIZACION_EMPRESA"] != NULL ){
+                            $xmlCPE .= '<cbc:CitySubdivisionName><![CDATA['.  $cabecera["URBANIZACION_EMPRESA"] . ']]></cbc:CitySubdivisionName>';
+                        }
+                                    
+                            $xmlCPE .= '<cbc:CityName><![CDATA[' . $cabecera["DEPARTAMENTO_EMPRESA"] . ']]></cbc:CityName>
                                     <cbc:CountrySubentity><![CDATA[' . $cabecera["PROVINCIA_EMPRESA"] . ']]></cbc:CountrySubentity>
                                     <cbc:District><![CDATA[' . $cabecera["DISTRITO_EMPRESA"] . ']]></cbc:District>
                                     <cac:AddressLine>
@@ -163,13 +168,23 @@ class GeneradorXML {
                             <cac:PartyLegalEntity>
                                 <cbc:RegistrationName><![CDATA[' . $RAZON_SOCIAL_CLIENTE . ']]></cbc:RegistrationName>
                                 <cac:RegistrationAddress>
-                                    <cbc:ID schemeName="Ubigeos" schemeAgencyName="PE:INEI">' . $cabecera["COD_UBIGEO_CLIENTE"] . '</cbc:ID>
-                                    <cbc:CityName><![CDATA[' . $cabecera["DEPARTAMENTO_CLIENTE"] . ']]></cbc:CityName>
-                                    <cbc:CountrySubentity><![CDATA[' . $cabecera["PROVINCIA_CLIENTE"] . ']]></cbc:CountrySubentity>
-                                    <cbc:District><![CDATA[' . $cabecera["DISTRITO_CLIENTE"] . ']]></cbc:District>
-                                    <cac:AddressLine>
-                                        <cbc:Line><![CDATA[' . $cabecera["DIRECCION_CLIENTE"] . ']]></cbc:Line>
-                                    </cac:AddressLine>                                        
+                                    <cbc:ID schemeName="Ubigeos" schemeAgencyName="PE:INEI">' . $cabecera["COD_UBIGEO_CLIENTE"] . '</cbc:ID>';
+
+                            if (isset($cabecera["DEPARTAMENTO_CLIENTE"]) && $cabecera["DEPARTAMENTO_CLIENTE"] != NULL){
+                                $xmlCPE .= '<cbc:CityName><![CDATA[' . $cabecera["DEPARTAMENTO_CLIENTE"] . ']]></cbc:CityName>';
+                            }
+
+                            if (isset($cabecera["PROVINCIA_CLIENTE"]) && $cabecera["PROVINCIA_CLIENTE"] != NULL){
+                                $xmlCPE .= '<cbc:CountrySubentity><![CDATA[' . $cabecera["PROVINCIA_CLIENTE"] . ']]></cbc:CountrySubentity>';
+                            }
+
+                            if (isset($cabecera["DISTRITO_CLIENTE"]) && $cabecera["DISTRITO_CLIENTE"] != NULL){
+                                $xmlCPE .= '<cbc:District><![CDATA[' . $cabecera["DISTRITO_CLIENTE"] . ']]></cbc:District>';
+                            }
+
+                            $xmlCPE .= ' <cac:AddressLine>
+                                            <cbc:Line><![CDATA[' . $cabecera["DIRECCION_CLIENTE"] . ']]></cbc:Line>
+                                        </cac:AddressLine> 
                                     <cac:Country>
                                         <cbc:IdentificationCode listID="ISO 3166-1" listAgencyName="United Nations Economic Commission for Europe" listName="Country">' . $cabecera["COD_PAIS_CLIENTE"] . '</cbc:IdentificationCode>
                                     </cac:Country>
@@ -387,7 +402,7 @@ class GeneradorXML {
             $doc->save($ruta ."/". $nombre_archivo);
 
             
-            $resp["xml_filename"] = basename($nombre_archivo, '.XML');
+            $resp["xml_filename"] =  basename($nombre_archivo, '.XML').'.XML';
             $resp['respuesta'] = 'ok';
             $resp["creado"]  = "1";
             $resp["ruta"] = $ruta;
@@ -548,7 +563,7 @@ class GeneradorXML {
             $xmlCPE = $xmlCPE . '</CreditNote>';
             $doc->loadXML($xmlCPE);
             $doc->save($ruta ."/". $nombre_archivo);
-            $resp["xml_filename"] = basename($nombre_archivo, '.XML');
+            $resp["xml_filename"] =  basename($nombre_archivo, '.XML').'.XML';
             $resp['respuesta'] = 'ok';
             $resp["creado"]  = "1";
             $resp["ruta"] = $ruta;
@@ -700,7 +715,7 @@ class GeneradorXML {
 
             $doc->loadXML($xmlCPE);
             $doc->save($ruta ."/". $nombre_archivo);
-            $resp["xml_filename"] = basename($nombre_archivo, '.XML');
+            $resp["xml_filename"] = basename($nombre_archivo, '.XML').'.XML';
             $resp['respuesta'] = 'ok';
             $resp["creado"]  = "1";
             $resp["ruta"] = $ruta;
@@ -893,7 +908,7 @@ class GeneradorXML {
 
             $doc->loadXML($xmlCPE);
             $doc->save($ruta ."/". $nombre_archivo);
-            $resp["xml_filename"] = basename($nombre_archivo, '.XML');
+            $resp["xml_filename"] =  basename($nombre_archivo, '.XML').'.XML';
             $resp['respuesta'] = 'ok';
             $resp["creado"]  = "1";
             $resp["ruta"] = $ruta;

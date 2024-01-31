@@ -1,2 +1,3 @@
 #ignore cpe_xml
 /cpe_xml/
+/config/*.php

@@ -23,7 +23,7 @@
  define("F_DIRECCION_COTIZACION","Av. José Balta 1412, Int:103 Ivanlika - Chiclayo");
  define("F_TELEFONO_COTIZACION","Telf. 074-503180");
 
- define("F_CARPETA_PRINCIPAL_FACTURACION","andreitababy-facturacion");
+ define("F_CARPETA_PRINCIPAL_FACTURACION","/andreitababy-facturacion");
  define("F_RUTA_SISTEMA_FACTURACION","../andreitababy-facturacion");
 
  //Conservar

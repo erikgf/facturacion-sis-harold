@@ -29,16 +29,30 @@
 		$enviadorXML = new EnviadorXML();
         $arreglo_respuestas = [];
         foreach ($comprobantes as $key => $obj_comprobante) {
+			$carpetaTipoComprobante = "";
+			switch($data["id_tipo_comprobante"]){
+				case "01": $carpetaTipoComprobante = "FA"; break;
+				case "03": $carpetaTipoComprobante = "BV"; break;	
+				case "07": $carpetaTipoComprobante = "NC"; break;
+				case "08": $carpetaTipoComprobante = "ND"; break;
+			}
+
             $fecha = str_replace("-","",$obj_comprobante["fecha_emision"]);
-			$archivo = $obj_comprobante["nombre_archivo"];
-			$directorio = "../cpe_xml/".F_RUC."/".$carpeta."/comprobante_firmado/".$fecha."/".$data["id_tipo_comprobante"]."/";
-            $ruta_cdr = "../cpe_xml/".F_RUC."/".$carpeta."/cdr/".$fecha."/".$data["id_tipo_comprobante"]."/";
+			$archivo = basename($obj_comprobante["nombre_archivo"], '.XML');
+			$EMISOR_RUC = $obj_comprobante["EMISOR_RUC"];
+			$EMISOR_USUARIO_SOL = $obj_comprobante["EMISOR_USUARIO_SOL"];
+			$EMISOR_PASS_SOL = $obj_comprobante["EMISOR_PASS_SOL"];
+
+			$directorio = "../cpe_xml/".$EMISOR_RUC."/".$carpeta."/comprobante_firmado/".$fecha."/".$carpetaTipoComprobante."/";
+            $ruta_cdr = "../cpe_xml/".$EMISOR_RUC."/".$carpeta."/cdr/".$fecha."/".$carpetaTipoComprobante."/";
             if(!is_dir($ruta_cdr)){
                 mkdir($ruta_cdr, 0755, true);
             }
 			$ruta_archivo = $directorio.$archivo;
-			$r = $enviadorXML->enviar_comprobante(F_RUC, F_USUARIO_SOL, F_CLAVE_SOL, $ruta_archivo, $ruta_cdr, $archivo, $ruta_ws);
+			$r = $enviadorXML->enviar_comprobante($EMISOR_RUC, $EMISOR_USUARIO_SOL, $EMISOR_PASS_SOL, $ruta_archivo, $ruta_cdr, $archivo, $ruta_ws);
             $r["id"] = $obj_comprobante["id"];
+			$r["id_tipo_comprobante"] = $obj_comprobante["id_tipo_comprobante"];
+			$r["nombre_archivo"] = $archivo;
             array_push($arreglo_respuestas, $r);
         }
 

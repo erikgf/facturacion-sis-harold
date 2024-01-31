@@ -91,7 +91,7 @@ class GeneradorRutaCPE{
             "%s://%s%s",
             isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
             $_SERVER['SERVER_NAME'],
-            "/andreitababy-facturacion"
+            F_CARPETA_PRINCIPAL_FACTURACION
         );
 
         return $urlBaseName.substr($ruta, 2); 

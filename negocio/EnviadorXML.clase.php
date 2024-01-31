@@ -99,7 +99,7 @@ class EnviadorXML{
         $filenameXMLCPE = $ruta_archivo . '.ZIP';
 
         if ($zip->open($filenameXMLCPE, ZIPARCHIVE::CREATE) === true) {
-            $zip->addFile($ruta_archivo . '.xml', $archivo . '.xml'); //ORIGEN, DESTINO
+            $zip->addFile($ruta_archivo . '.XML', $archivo . '.XML'); //ORIGEN, DESTINO
             $zip->close();
         }
 
@@ -197,10 +197,11 @@ class EnviadorXML{
 
                		$resp['respuesta'] = 'ok';
 	                $resp['cod_sunat'] = $doc_cdr->getElementsByTagName('ResponseCode')->item(0)->nodeValue;
-                    $resp['observaciones'] = "";
+                    //$resp['observaciones'] = "";
 	                $resp['mensaje'] = str_replace("'","",$doc_cdr->getElementsByTagName('Description')->item(0)->nodeValue);
 	                $resp['hash_cdr'] = $doc_cdr->getElementsByTagName('DigestValue')->item(0)->nodeValue;
 	                $resp['signature_value'] = $doc_cdr->getElementsByTagName('SignatureValue')->item(0)->nodeValue;
+                    $resp["xml_cdr"]  = $archivoXML;
                     //$resp['observaciones'] = $doc_cdr->getElementsByTagName('Notes')->item(0)->nodeValue;
                 } else {
                 	$resp['respuesta'] = 'ok';
@@ -209,6 +210,7 @@ class EnviadorXML{
                     //$resp['observaciones'] = "";
 	                $resp['hash_cdr'] = "";
 	                $resp['signature_value'] = "";
+                    $resp["xml_cdr"]  = "";
                 }
 
                 //eliminamos los archivos Zipeados
@@ -230,12 +232,14 @@ class EnviadorXML{
               //  $resp['observaciones'] = "";
                 $resp['hash_cdr'] = "";
                 $resp['signature_value'] = "";
+                $resp["xml_cdr"]  = "";
             }
         } else {
             //echo "no responde web";
             $doc = new DOMDocument();
             if ($response != ""){
                 $doc->loadXML($response);
+
                 //===================VERIFICAMOS SI HA ENVIADO CORRECTAMENTE EL COMPROBANTE=====================
                 if (isset($doc->getElementsByTagName('applicationResponse')->item(0)->nodeValue)) {
                     $xmlCDR = $doc->getElementsByTagName('applicationResponse')->item(0)->nodeValue;
@@ -243,8 +247,8 @@ class EnviadorXML{
                     $xmlCDR = $doc->getElementsByTagName('applicationResponse')->item(0)->nodeValue;
                     file_put_contents($ruta_archivo_cdr . 'ERROR-' . $archivo . '.ZIP', base64_decode($xmlCDR));
                     //extraemos archivo zip a xml
-                    $zip = new ZipArchive;
                     $extension = ".XML";
+                    $zip = new ZipArchive;
                     if ($zip->open($ruta_archivo_cdr . 'ERROR-' . $archivo . '.ZIP') === TRUE) {
                         if (!$zip->extractTo(substr($ruta_archivo_cdr, 0, -1), 'ERROR-' . $archivo . $extension)){
                             $extension =".xml";
@@ -257,23 +261,29 @@ class EnviadorXML{
                         unlink($ruta_archivo_cdr . 'ERROR-' . $archivo . '.ZIP');
                     }
 
+                    $archivoXML = $ruta_archivo_cdr . 'ERROR-' . $archivo . $extension;
                     //=============hash CDR=================
                     $doc_cdr = new DOMDocument();
-                    $encontrado = $doc_cdr->load($ruta_archivo_cdr . 'ERROR-' . $archivo . $extension);
+                    $doc_cdr->load($archivoXML);
 
                     $resp['respuesta'] = 'error';
                     $resp['cod_sunat'] = "-1000";
                     $resp['mensaje'] = "No hubo respuesta del servidor SUNAT. Intente nuevamente o verifique su conexión a INTERNET";
                     $resp['hash_cdr'] = "";
+                    $resp["xml_cdr"]  = $archivoXML;
                 } else {
                     //===================VERIFICAMOS SI HA ENVIADO CORRECTAMENTE EL COMPROBANTE=====================
+                    $extension = ".xml";
+                    $archivoXML = $ruta_archivo_cdr . 'ERROR-' . $archivo . $extension;
+
                     $resp['respuesta'] = 'error';
                     $cod_sunat_full = $doc->getElementsByTagName('faultcode')->item(0)->nodeValue;
                     $resp['cod_sunat'] = preg_replace('/[^0-9]/', '', $cod_sunat_full);  
                     $resp['mensaje'] = str_replace("'","",$doc->getElementsByTagName('faultstring')->item(0)->nodeValue);
                     $resp['hash_cdr'] = "";
+                    $resp["xml_cdr"]  = $archivoXML;
 
-                    file_put_contents($ruta_archivo_cdr . 'ERROR-' . $archivo . '.xml', $response);
+                    file_put_contents($archivoXML, $response);
                 }
             }
         }
